@@ -1,21 +1,26 @@
-const popPlaylist = [2, 1, 3, 5, 6, 4]
-const rockPlaylist = [4, 3, 5, 6, 1, 2]
-const pagodePlaylist = [6, 5, 2, 1, 3, 4]
+import { matchPlaylists } from "./matchPlaylists";
 
-function countingInversions(musicsOrdered){
+const popPlaylist = ["2", "1", "3", "5", "6", "4"]
+const rockPlaylist = ["4", "3", "5", "6", "1", "2"]
+const pagodePlaylist = ["6", "5", "2", "1", "3", "4"]
+
+export function countingInversions(musicsOrdered){
     const arrayData = []
     musicsOrdered.forEach(musics => {
         arrayData.push(musics.id)
     });
 
+    
     const popArray = arrayData.concat(popPlaylist)
     const popInversions = mergeSortAndCount(popArray, 0, popArray.length - 1)
-
+    
     const rockArray = arrayData.concat(rockPlaylist)
     const rockInversions = mergeSortAndCount(rockArray, 0, rockArray.length - 1)
-
+    
     const pagodeArray = arrayData.concat(pagodePlaylist)
     const pagodeInversions = mergeSortAndCount(pagodeArray, 0, pagodeArray.length - 1)
+
+    return matchPlaylists(popInversions, rockInversions, pagodeInversions)
 }
 
 function mergeAndCount(array, first, m, last){    
