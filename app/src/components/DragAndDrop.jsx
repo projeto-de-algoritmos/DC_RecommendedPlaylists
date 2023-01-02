@@ -2,9 +2,8 @@ import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { countingInversions } from "../utils/countingInversions";
 import { musicsToSelect } from "../utils/musicsToSelect";
-import { RecommendedPlaylists } from "./RecommendedPlaylists";
 
-export function DragAndDropList() {
+export function DragAndDropList({setInversionResult}) {
   const [musics, updateMusics] = useState(musicsToSelect);
 
   function handleOnDragEnd(result) {
@@ -19,7 +18,7 @@ export function DragAndDropList() {
 
   const handleRecommendedPlaylists = () => {
     const result = countingInversions(musics)
-    RecommendedPlaylists(result)
+    setInversionResult(result)
   }
 
   return (
