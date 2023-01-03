@@ -11,7 +11,7 @@ it('should match returned values from match playlist', () => {
     expect(matchPlaylists(11, 12, 10)).toBe("Pagode")
 
     // Verify if all genre has the same inversion value
-    expect(matchPlaylists(10, 10, 10)).toBe("Nenhuma playlist recomendada")
+    expect(matchPlaylists(10, 10, 10)).toBe(null)
 
     // Verify if Pop inversion is equal to Rock
     expect(matchPlaylists(10, 10, 11)).toBe("Pop e Rock")
