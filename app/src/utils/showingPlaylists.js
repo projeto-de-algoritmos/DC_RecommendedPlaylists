@@ -37,7 +37,7 @@ export function showingPlaylistData(label) {
       auxArray.push(popPlaylistData, pagodePlaylistData);
       return auxArray;
     case "Rock e Pagode":
-      auxArray.push(popPlaylistData, pagodePlaylistData);
+      auxArray.push(rockPlaylistData, pagodePlaylistData);
       return auxArray;
     default:
       return false;
