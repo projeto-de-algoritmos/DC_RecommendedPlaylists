@@ -3,7 +3,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { countingInversions } from "../utils/countingInversions";
 import { musicsToSelect } from "../utils/musicsToSelect";
 
-export function DragAndDropList({setInversionResult}) {
+export function DragAndDropList({ inversionResult, setInversionResult }) {
   const [musics, updateMusics] = useState(musicsToSelect);
 
   function handleOnDragEnd(result) {
@@ -17,9 +17,9 @@ export function DragAndDropList({setInversionResult}) {
   }
 
   const handleRecommendedPlaylists = () => {
-    const result = countingInversions(musics)
-    setInversionResult(result)
-  }
+    const result = countingInversions(musics);
+    setInversionResult(result);
+  };
 
   return (
     <>
@@ -65,11 +65,20 @@ export function DragAndDropList({setInversionResult}) {
           )}
         </Droppable>
       </DragDropContext>
-      <button className="mt-10 w-fit h-fit py-3 px-5 bg-[#1DB954] rounded-md hover:bg-opacity-75 transition-all ease-in"
-      onClick={handleRecommendedPlaylists}
-      >
-        Encontrar as melhores playlists
-      </button>
+      <div className="flex items-center mt-10 space-x-4">
+        <button
+          className="w-fit h-fit py-3 px-5 bg-[#1DB954] rounded-md hover:bg-opacity-75 transition-all ease-in disabled:bg-gray-600"
+          onClick={handleRecommendedPlaylists}
+          disabled={inversionResult}
+        >
+          Encontrar as melhores playlists
+        </button>
+        <button className="w-fit h-fit p-3 bg-orange-400 flex items-center justify-center rounded-md hover:bg-opacity-75 transition-all ease-in"
+        onClick={() => window.location.reload()}
+        >
+          <span className="material-symbols-outlined">cached</span>
+        </button>
+      </div>
     </>
   );
 }
